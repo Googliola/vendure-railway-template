@@ -19,10 +19,11 @@ export const config: VendureConfig = {
         shopApiPath: 'shop-api',
         middleware: [
             {
-              handler: (req, res) => res.redirect('/admin'),
+              handler: (_req: any, res: any) => res.redirect('/admin'),
               route: '/',
             },
         ],
+
         // The following options are useful in development mode,
         // but are best turned off for production for security
         // reasons.
