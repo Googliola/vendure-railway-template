@@ -17,13 +17,17 @@ export const config: VendureConfig = {
         port: +(process.env.PORT || 3000),
         adminApiPath: 'admin-api',
         shopApiPath: 'shop-api',
-        middleware: [
+          middleware: [
             {
-              handler: (_req: any, res: any) => res.redirect('/admin'),
+              handler: (_req: any, res: any, next: any) => {
+                if (_req.path === '/') {
+                  return res.redirect('/admin');
+                }
+                next();
+              },
               route: '/',
             },
-        ],
-
+          ],
         // The following options are useful in development mode,
         // but are best turned off for production for security
         // reasons.
