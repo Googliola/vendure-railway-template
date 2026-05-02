@@ -7,6 +7,10 @@ import {
 import { defaultEmailHandlers, EmailPlugin } from '@vendure/email-plugin';
 import { AssetServerPlugin, configureS3AssetStorage } from '@vendure/asset-server-plugin';
 import { AdminUiPlugin } from '@vendure/admin-ui-plugin';
+
+import { PlanzerPlugin } from './plugins/planzer/planzer.plugin';
+import { compileUiExtensions } from '@vendure/ui-devkit/compiler';
+
 import 'dotenv/config';
 import path from 'path';
 
@@ -125,5 +129,33 @@ export const config: VendureConfig = {
             route: 'admin',
             port: 3002,
         }),
+				
+				
+				
+			PlanzerPlugin,
+					AdminUiPlugin.init({
+						route: 'admin',
+						port: 3002,
+						app: compileUiExtensions({
+							outputPath: path.join(__dirname, '../admin-ui'),
+							extensions: [
+								{
+									id: 'planzer-ui',
+									extensionPath: path.join(__dirname, 'plugins/planzer/ui'),
+									ngModules: [
+										{
+											type: 'shared',
+											ngModuleFileName: 'planzer-ui.module.ts',
+											ngModuleName: 'PlanzerUiModule',
+										},
+									],
+								},
+							],
+						}),
+					}),
+				],
+				
+				
+				
     ],
 };

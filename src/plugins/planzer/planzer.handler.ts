@@ -1,10 +1,11 @@
 import { FulfillmentHandler, LanguageCode } from '@vendure/core';
 import { PlanzerService } from './planzer.service';
+import { PLANZER_HANDLER_CODE, PLANZER_UI_LABELS } from './constants';
 
 export const planzerFulfillmentHandler = new FulfillmentHandler({
-  code: 'planzer-fulfillment-handler',
+  code: 'PLANZER_HANDLER_CODE',
   description: [
-    { languageCode: LanguageCode.en, value: 'Planzer Paket Fulfillment' },
+		{ languageCode: LanguageCode.en, value: PLANZER_UI_LABELS.HANDLER_DESCRIPTION },
   ],
   args: {
     // These appear in the Admin UI when configuring the shipping method
