@@ -1,4 +1,4 @@
-import { PluginCommonModule, VendurePlugin } from '@vendure/core';
+import { LanguageCode, PluginCommonModule, VendurePlugin } from '@vendure/core';
 import { planzerFulfillmentHandler } from './planzer.handler';
 
 @VendurePlugin({

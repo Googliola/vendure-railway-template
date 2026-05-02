@@ -1,1 +1,1 @@
-planzer-label-button.component.ts
+export {};
