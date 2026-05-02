@@ -35,7 +35,7 @@ export const planzerFulfillmentHandler = new FulfillmentHandler({
         },
       };
     } catch (e) {
-      throw new Error(`Planzer Integration Error: ${e.message}`);
+      throw new Error(`Planzer Integration Error: ${e instanceof Error ? e.message : String(e)}`);
     }
   },
 });

@@ -1,4 +1,4 @@
-import { PluginCommonModule, VendurePlugin } from '@vendure/core';
+import { LanguageCode, PluginCommonModule, VendurePlugin } from '@vendure/core';
 import { planzerFulfillmentHandler } from './planzer.handler';
 import { PLANZER_LABEL_CUSTOM_FIELD, PLANZER_UI_LABELS } from './constants';
 
