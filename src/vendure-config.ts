@@ -125,37 +125,26 @@ export const config: VendureConfig = {
                 changeEmailAddressUrl: 'http://localhost:8080/verify-email-address-change'
             },
         }),
+        PlanzerPlugin,
         AdminUiPlugin.init({
             route: 'admin',
             port: 3002,
+            app: compileUiExtensions({
+                outputPath: path.join(__dirname, '../admin-ui'),
+                extensions: [
+                    {
+                        id: 'planzer-ui',
+                        extensionPath: path.join(__dirname, 'plugins/planzer/ui'),
+                        ngModules: [
+                            {
+                                type: 'shared',
+                                ngModuleFileName: 'planzer-ui.module.ts',
+                                ngModuleName: 'PlanzerUiModule',
+                            },
+                        ],
+                    },
+                ],
+            }),
         }),
-				
-				
-				
-			PlanzerPlugin,
-					AdminUiPlugin.init({
-						route: 'admin',
-						port: 3002,
-						app: compileUiExtensions({
-							outputPath: path.join(__dirname, '../admin-ui'),
-							extensions: [
-								{
-									id: 'planzer-ui',
-									extensionPath: path.join(__dirname, 'plugins/planzer/ui'),
-									ngModules: [
-										{
-											type: 'shared',
-											ngModuleFileName: 'planzer-ui.module.ts',
-											ngModuleName: 'PlanzerUiModule',
-										},
-									],
-								},
-							],
-						}),
-					}),
-				],
-				
-				
-				
     ],
 };
